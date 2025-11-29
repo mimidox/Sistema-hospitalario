@@ -53,7 +53,7 @@ class ControlInicio extends Controller
         }
 
         // Validar password
-        if ($request->password !== $usuario->contraseña) {
+        if (hash('sha256', $request->password) !== $usuario->contraseña) {
             \Log::info('Contraseña incorrecta para usuario: ' . $request->username);
             return back()->with('error', 'Contraseña incorrecta');
         }
@@ -87,6 +87,11 @@ class ControlInicio extends Controller
         session([
             'usuario_id' => $usuario->usuario_id,
             'username'   => $usuario->username,
+            'nombre'     => $usuario->nombre,
+            'paterno'    => $usuario->paterno,
+            'materno'    => $usuario->materno,
+            'correo'     => $usuario->correo,
+            'telefono'   => $usuario->telefono,
             'rol'        => $rol,
             'logged_in'  => true
         ]);
@@ -114,30 +119,5 @@ class ControlInicio extends Controller
     {
         session()->flush();
         return redirect()->route('ControlInicio.formlogin')->with('success', 'Sesión cerrada correctamente');
-    }
-    public function administrador()
-    {
-        // Verificar si el usuario está logueado
-        if (!session('logged_in') || session('rol') !== 'administrativo') {
-            return redirect()->route('ControlInicio.formlogin')
-                ->with('error', 'Debe iniciar sesión como administrativo');
-        }
-
-        // Obtener datos para las tablas
-        $usuarios = DB::table('usuario')->get();
-        $pacientes = DB::table('paciente')
-            ->join('usuario', 'paciente.usuario_id', '=', 'usuario.usuario_id')
-            ->select('paciente.*', 'usuario.*')
-            ->get();
-        $medicos = DB::table('medico')
-            ->join('usuario', 'medico.usuario_id', '=', 'usuario.usuario_id')
-            ->select('medico.*', 'usuario.*')
-            ->get();
-        $administrativos = DB::table('administrativo')
-            ->join('usuario', 'administrativo.usuario_id', '=', 'usuario.usuario_id')
-            ->select('administrativo.*', 'usuario.*')
-            ->get();
-
-        return view('pages.logins.administrador', compact('usuarios', 'pacientes', 'medicos', 'administrativos'));
     }
 }

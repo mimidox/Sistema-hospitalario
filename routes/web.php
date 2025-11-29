@@ -20,7 +20,11 @@ Route::post('/logout', [ControlInicio::class, 'logout'])->name('logout');
 Route::get('/medico', [ControlDoctor::class, 'dashboard'])->name('medico.dashboard');
 Route::get('/paciente', [ControlPaciente::class, 'dashboard'])->name('paciente.dashboard');
 
-// ADMINISTRADOR DASHBOARD
-Route::get('/administrador', [ControlInicio::class, 'administrador'])->name('administrador.dashboard');
+
+// Rutas para el administrador
+Route::get('/administrador', [ControlAdmin::class, 'dashboard'])->name('administrador.dashboard');
+Route::get('/obtener-usuario-completo/{id}', [ControlAdmin::class, 'obtenerUsuarioCompleto'])->name('obtener.usuario.completo');
 Route::post('/crear-usuario', [ControlAdmin::class, 'crearUsuario'])->name('crear.usuario');
+Route::post('/actualizar-usuario/{id}', [ControlAdmin::class, 'actualizarUsuario'])->name('actualizar.usuario');
+Route::get('/verificar-eliminar-usuario/{id}', [ControlAdmin::class, 'verificarEliminarUsuario'])->name('verificar.eliminar.usuario');
 Route::delete('/eliminar-usuario/{id}', [ControlAdmin::class, 'eliminarUsuario'])->name('eliminar.usuario');

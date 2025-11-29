@@ -20,10 +20,8 @@
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center me-auto">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
-           <img src="assets/img/LogoLab.png" alt="">
+        <a href="{{ route('ControlInicio.index') }}" class="logo d-flex align-items-center me-auto">
+          <img src="{{ asset('assets/img/LogoLab.png') }}" alt="" class="img-fluid">
           <h1 class="sitename">Medilab</h1>
         </a>
 
