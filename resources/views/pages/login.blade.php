@@ -5,15 +5,16 @@
 
         <h3 class="text-center mb-3">Iniciar Sesión</h3>
 
-        {{-- SELECTOR DE ROL ARRIBA --}}
-        <form method="POST" action="">
+        {{-- LOGIN FORM --}}
+        <form method="POST" action="{{ route('ControlInicio.login') }}">
             @csrf
 
+            {{-- SELECTOR DE ROL --}}
             <div class="mb-3">
                 <label class="form-label fw-bold">Selecciona tu rol</label>
                 <select name="rol" class="form-select" required>
                     <option value="">-- Elegir rol --</option>
-                    <option value="doctor">Doctor</option>
+                    <option value="medico">Doctor / Médico</option>
                     <option value="paciente">Paciente</option>
                     <option value="administrativo">Administrativo</option>
                 </select>
@@ -21,18 +22,19 @@
 
             <hr>
 
-            {{-- FORMULARIO --}}
+            {{-- USERNAME O CORREO SEGÚN TU BD --}}
             <div class="mb-3">
-                <label class="form-label">Correo</label>
-                <input type="email" name="email" class="form-control" required>
+                <label class="form-label">Usuario</label>
+                <input type="text" name="username" class="form-control" required>
             </div>
 
+            {{-- PASSWORD --}}
             <div class="mb-3">
                 <label class="form-label">Contraseña</label>
                 <input type="password" name="password" class="form-control" required>
             </div>
 
-            {{-- BOTÓN ABAJO --}}
+            {{-- SUBMIT --}}
             <div class="d-grid mt-3">
                 <button type="submit" class="btn btn-primary">
                     Ingresar

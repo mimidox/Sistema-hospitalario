@@ -2,62 +2,134 @@
 @include('include.navbar')
 <main class="container mx-auto mt-8">
 
-        {{-- TARJETAS SUPERIORES --}}
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-            <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-                <h2 class="text-gray-600">Doctores</h2>
-                <p class="text-4xl font-bold text-blue-700">34</p>
-            </div>
+<div class="container-fluid mt-4">
+    <div class="row">
 
-            <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-                <h2 class="text-gray-600">Pacientes</h2>
-                <p class="text-4xl font-bold text-green-700">214</p>
-            </div>
+        {{-- PANEL IZQUIERDO --}}
+        <div class="col-3">
+            <div class="sidebar text-center shadow">
 
-            <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
-                <h2 class="text-gray-600">Citas Hoy</h2>
-                <p class="text-4xl font-bold text-yellow-600">18</p>
-            </div>
+                <div class="profile-circle mb-3"></div>
 
-        </div>
+                <h4 class="mb-1">{{ session('username') ?? 'Usuario Nombre' }}</h4>
+                <p class="text-muted">Datos aquí</p>
 
-
-        {{-- HOSPITALIZACIONES --}}
-        <div class="mt-8">
-            <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition w-full md:w-1/2 mx-auto">
-                <h2 class="text-gray-600">Hospitalizaciones activas</h2>
-                <p class="text-4xl font-bold text-red-700">7</p>
             </div>
         </div>
 
+        {{-- PANEL PRINCIPAL --}}
+        <div class="col-9">
 
-        {{-- CALENDARIO / ACTIVIDADES --}}
-        <div class="mt-10 bg-white p-6 rounded-xl shadow">
+            {{-- BOTONES SUPERIORES --}}
+            <div class="top-buttons mb-3 d-flex gap-2 justify-content-center">
 
-            <h2 class="text-xl font-bold text-gray-700 mb-4">Calendario / Actividades</h2>
+                <a href="#" class="btn btn-success">CREAR</a>
 
-            {{-- Calendario Placeholder --}}
-            <div class="grid grid-cols-7 gap-2 text-center text-gray-700">
-                <div class="p-2 bg-gray-200 rounded">Lun</div>
-                <div class="p-2 bg-gray-200 rounded">Mar</div>
-                <div class="p-2 bg-gray-200 rounded">Mié</div>
-                <div class="p-2 bg-gray-200 rounded">Jue</div>
-                <div class="p-2 bg-gray-200 rounded">Vie</div>
-                <div class="p-2 bg-gray-200 rounded">Sáb</div>
-                <div class="p-2 bg-gray-200 rounded">Dom</div>
+                <a href="#" class="btn" style="background:#d18cf6; color:white;">ÁREAS Y RECURSOS</a>
+
+                <a href="#" class="btn btn-primary">CITAS</a>
+
+                <a href="#" class="btn btn-danger" style="background:#ff7c96;">PACIENTES HOSPITALIZADOS</a>
+
+                <a href="#" class="btn btn-danger">AUDITORÍA</a>
+
             </div>
 
-            <div class="mt-6">
-                <h3 class="font-semibold text-gray-600">Últimos movimientos:</h3>
+            {{-- TABS --}}
+            <ul class="nav nav-tabs mb-2 tab-custom">
 
-                <ul class="list-disc ml-6 mt-2 text-gray-500">
-                    <li>Paciente registrado</li>
-                    <li>Cita creada</li>
-                    <li>Hospitalización activa</li>
-                </ul>
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="tab" href="#tab-usuarios">Usuarios</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tab-medicos">Médicos</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tab-pacientes">Pacientes</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" href="#tab-admins">Administradores</a>
+                </li>
+
+            </ul>
+
+            {{-- CONTENIDO DE TABS --}}
+            <div class="tab-content">
+
+                {{-- TAB USUARIOS --}}
+                <div class="tab-pane fade show active" id="tab-usuarios">
+                    <div class="table-area shadow">
+
+                        <h3 class="text-center mb-4">Usuarios</h3>
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Username</th>
+                                    <th>Nombre</th>
+                                    <th>Paterno</th>
+                                    <th>Materno</th>
+                                    <th>Correo</th>
+                                    <th>Operaciones</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {{-- Ejemplo estático. Reemplaza con tu foreach --}}
+                                <tr>
+                                    <td>1</td>
+                                    <td>admin01</td>
+                                    <td>Juan</td>
+                                    <td>Pérez</td>
+                                    <td>López</td>
+                                    <td>correo@ejemplo.com</td>
+                                    <td>
+                                        <a href="#" class="btn btn-success btn-sm">VER</a>
+                                        <a href="#" class="btn btn-primary btn-sm">EDITAR</a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+                {{-- TAB MÉDICOS --}}
+                <div class="tab-pane fade" id="tab-medicos">
+                    <div class="table-area shadow">
+                        <h3 class="text-center mb-4">Médicos</h3>
+                        <p class="text-center text-muted">Aquí aparecerá la lista de médicos.</p>
+                    </div>
+                </div>
+
+                {{-- TAB PACIENTES --}}
+                <div class="tab-pane fade" id="tab-pacientes">
+                    <div class="table-area shadow">
+                        <h3 class="text-center mb-4">Pacientes</h3>
+                        <p class="text-center text-muted">Aquí aparecerá la lista de pacientes.</p>
+                    </div>
+                </div>
+
+                {{-- TAB ADMINISTRADORES --}}
+                <div class="tab-pane fade" id="tab-admins">
+                    <div class="table-area shadow">
+                        <h3 class="text-center mb-4">Administradores</h3>
+                        <p class="text-center text-muted">Aquí aparecerá la lista de administradores.</p>
+                    </div>
+                </div>
+
             </div>
+
         </div>
+    </div>
+</div>
+
 
 </main>
 @include('include.footer')

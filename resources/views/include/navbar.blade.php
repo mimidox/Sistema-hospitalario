@@ -31,7 +31,7 @@
           <ul>
             <li><a  href="{{route('ControlInicio.index')}}" class="active">Home<br></a></li>
             <li><a  href="{{route('ControlInicio.main')}}">Main</a></li>
-            <li><a href="{{route('ControlInicio.login')}}">Loggin</a></li>
+            <li><a href="{{route('ControlInicio.formlogin')}}">Loggin</a></li>
             <li><a href="#departments">Departments</a></li>
             <li><a href="#doctors">Doctors</a></li>
             <li><a href="#">Administradores</a></li>
