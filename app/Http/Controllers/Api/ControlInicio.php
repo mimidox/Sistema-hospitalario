@@ -110,19 +110,34 @@ class ControlInicio extends Controller
             return redirect()->route('administrador.dashboard');
         }
     }
+    public function logout(Request $request)
+    {
+        session()->flush();
+        return redirect()->route('ControlInicio.formlogin')->with('success', 'Sesión cerrada correctamente');
+    }
     public function administrador()
     {
-        // DEBUG: Verificar sesión actual
-        \Log::info('Accediendo a administrador. Sesión:', session()->all());
-        
         // Verificar si el usuario está logueado
         if (!session('logged_in') || session('rol') !== 'administrativo') {
-            \Log::warning('Acceso no autorizado a administrador. Sesión: ' . json_encode(session()->all()));
             return redirect()->route('ControlInicio.formlogin')
                 ->with('error', 'Debe iniciar sesión como administrativo');
         }
 
-        \Log::info('Mostrando vista administrador para usuario: ' . session('username'));
-        return view('pages.logins.administrador');
+        // Obtener datos para las tablas
+        $usuarios = DB::table('usuario')->get();
+        $pacientes = DB::table('paciente')
+            ->join('usuario', 'paciente.usuario_id', '=', 'usuario.usuario_id')
+            ->select('paciente.*', 'usuario.*')
+            ->get();
+        $medicos = DB::table('medico')
+            ->join('usuario', 'medico.usuario_id', '=', 'usuario.usuario_id')
+            ->select('medico.*', 'usuario.*')
+            ->get();
+        $administrativos = DB::table('administrativo')
+            ->join('usuario', 'administrativo.usuario_id', '=', 'usuario.usuario_id')
+            ->select('administrativo.*', 'usuario.*')
+            ->get();
+
+        return view('pages.logins.administrador', compact('usuarios', 'pacientes', 'medicos', 'administrativos'));
     }
 }

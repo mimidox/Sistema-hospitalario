@@ -15,10 +15,12 @@ Route::get('/medilab', [ControlInicio::class, 'index'])->name('ControlInicio.ind
 Route::get('/main', [ControlInicio::class, 'main'])->name('ControlInicio.main'); 
 Route::get('/formlogin', [ControlInicio::class, 'formlogin'])->name('ControlInicio.formlogin');
 Route::post('/login', [ControlInicio::class, 'login'])->name('ControlInicio.login'); 
-
-// RUTAS DEL LOGIN - CORREGIDAS
+Route::post('/logout', [ControlInicio::class, 'logout'])->name('logout');
+// RUTAS DEL LOGIN
 Route::get('/medico', [ControlDoctor::class, 'dashboard'])->name('medico.dashboard');
 Route::get('/paciente', [ControlPaciente::class, 'dashboard'])->name('paciente.dashboard');
 
-// CORRECCIÓN: Ruta para administrador - ESTA ES LA IMPORTANTE
+// ADMINISTRADOR DASHBOARD
 Route::get('/administrador', [ControlInicio::class, 'administrador'])->name('administrador.dashboard');
+Route::post('/crear-usuario', [ControlAdmin::class, 'crearUsuario'])->name('crear.usuario');
+Route::delete('/eliminar-usuario/{id}', [ControlAdmin::class, 'eliminarUsuario'])->name('eliminar.usuario');
