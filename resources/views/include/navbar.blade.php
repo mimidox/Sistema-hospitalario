@@ -21,29 +21,16 @@
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
-<<<<<<< HEAD
         <a href="{{ route('ControlInicio.index') }}" class="logo d-flex align-items-center me-auto">
           <img src="{{ asset('assets/img/LogoLab.png') }}" alt="" class="img-fluid">
-=======
-        <a href="index.html" class="logo d-flex align-items-center me-auto">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
-          <img src="assets/img/LogoLab.png" alt="">
->>>>>>> 9f0a2c19d43f5a0aca7cf05acfdafaafd81c3729
           <h1 class="sitename">Medilab</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
           <ul>
-<<<<<<< HEAD
-            <li><a  href="{{route('ControlInicio.index')}}" class="active">Home<br></a></li>
-            <li><a  href="{{route('ControlInicio.main')}}">Main</a></li>
-            <li><a href="{{route('ControlInicio.formlogin')}}">Loggin</a></li>
-=======
-            <li><a href="{{route('ControlInicio.index')}}" class="active">Home<br></a></li>
-            <li><a href="{{route('ControlInicio.main')}}">Main</a></li>
-            <li><a href="{{route('ControlInicio.login')}}">Loggin</a></li>
->>>>>>> 9f0a2c19d43f5a0aca7cf05acfdafaafd81c3729
+            <li><a href="{{ route('ControlInicio.index') }}" class="active">Home<br></a></li>
+            <li><a href="{{ route('ControlInicio.main') }}">Main</a></li>
+            <li><a href="{{ route('ControlInicio.formlogin') }}">Loggin</a></li>
             <li><a href="#departments">Departments</a></li>
 
             <li class="nav-item"><a class="nav-link" href="{{ route('medicos.index') }}">Médicos</a></li>
