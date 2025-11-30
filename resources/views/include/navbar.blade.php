@@ -5,7 +5,8 @@
     <div class="topbar d-flex align-items-center">
       <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
-          <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
+          <i class="bi bi-envelope d-flex align-items-center"><a
+              href="mailto:contact@example.com">contact@example.com</a></i>
           <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
         </div>
         <div class="social-links d-none d-md-flex align-items-center">
@@ -20,37 +21,44 @@
     <div class="branding d-flex align-items-center">
 
       <div class="container position-relative d-flex align-items-center justify-content-between">
+<<<<<<< HEAD
         <a href="{{ route('ControlInicio.index') }}" class="logo d-flex align-items-center me-auto">
           <img src="{{ asset('assets/img/LogoLab.png') }}" alt="" class="img-fluid">
+=======
+        <a href="index.html" class="logo d-flex align-items-center me-auto">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <img src="assets/img/LogoLab.png" alt="">
+>>>>>>> 9f0a2c19d43f5a0aca7cf05acfdafaafd81c3729
           <h1 class="sitename">Medilab</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
           <ul>
+<<<<<<< HEAD
             <li><a  href="{{route('ControlInicio.index')}}" class="active">Home<br></a></li>
             <li><a  href="{{route('ControlInicio.main')}}">Main</a></li>
             <li><a href="{{route('ControlInicio.formlogin')}}">Loggin</a></li>
+=======
+            <li><a href="{{route('ControlInicio.index')}}" class="active">Home<br></a></li>
+            <li><a href="{{route('ControlInicio.main')}}">Main</a></li>
+            <li><a href="{{route('ControlInicio.login')}}">Loggin</a></li>
+>>>>>>> 9f0a2c19d43f5a0aca7cf05acfdafaafd81c3729
             <li><a href="#departments">Departments</a></li>
-            <li><a href="#doctors">Doctors</a></li>
-            <li><a href="#">Administradores</a></li>
-            <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+
+            <li class="nav-item"><a class="nav-link" href="{{ route('medicos.index') }}">Médicos</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('pacientes.index') }}">Pacientes</a></li>
+
+            <li class="dropdown"><a href="#"><span>Dropdown</span> <i
+                  class="bi bi-chevron-down toggle-dropdown"></i></a>
               <ul>
-                <li><a href="#">Dropdown 1</a></li>
-                <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                  <ul>
-                    <li><a href="#">Deep Dropdown 1</a></li>
-                    <li><a href="#">Deep Dropdown 2</a></li>
-                    <li><a href="#">Deep Dropdown 3</a></li>
-                    <li><a href="#">Deep Dropdown 4</a></li>
-                    <li><a href="#">Deep Dropdown 5</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Dropdown 2</a></li>
-                <li><a href="#">Dropdown 3</a></li>
-                <li><a href="#">Dropdown 4</a></li>
+                <li><a href="{{ route('consultas.index') }}">Consultas Médicas</a></li>
+                <li><a href="{{ route('habitaciones.index') }}">Habitaciones</a></li>
+                <li><a href="{{ route('areas.index') }}">Áreas</a></li>
               </ul>
             </li>
             <li><a href="#contact">Contact</a></li>
+
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
