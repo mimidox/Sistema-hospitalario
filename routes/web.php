@@ -44,3 +44,4 @@ Route::resource('medicos', MedicoController::class)->parameters([
 Route::resource('pacientes', PacienteController::class)->parameters([
     'pacientes' => 'paciente',
 ]);
+
