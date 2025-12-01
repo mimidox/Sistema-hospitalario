@@ -5,14 +5,26 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Paciente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PacienteController extends Controller
 {
     public function index()
     {
+        // Todos los pacientes
         $pacientes = Paciente::all();
-        return view('pages.pacientes.index', compact('pacientes'));
+
+        // Conteo agrupado por tipo de sangre
+        $conteo_sangre = DB::select("
+            SELECT tipo_de_sangre, COUNT(*) AS total
+            FROM paciente
+            GROUP BY tipo_de_sangre
+        ");
+
+        // Enviamos ambas variables a la vista
+        return view('pages.pacientes.index', compact('pacientes', 'conteo_sangre'));
     }
+
 
     public function create()
     {
