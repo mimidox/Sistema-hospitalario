@@ -28,9 +28,8 @@
                     <li><a href="{{ route('ControlInicio.main') }}">Main</a></li>
                     <li><a href="{{ route('ControlInicio.login') }}">Loggin</a></li>
                     <li><a href="#departments">Departments</a></li>
-                    <li><a href="#doctors">Doctors</a></li>
                     
-                    <!-- 🆕 DROPDOWN DE DOCTORES -->
+                    <!-- 🆕 DROPDOWN DE DOCTORES (TU CÓDIGO) -->
                     <li class="dropdown">
                         <a href="#"><span>Gestión Doctores</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
@@ -41,21 +40,18 @@
                             <li><a href="{{ route('doctores.reporte.especialidades') }}">Reporte Especialidades</a></li>
                         </ul>
                     </li>
-                    <!-- FIN DEL NUEVO DROPDOWN -->
+                    <!-- FIN DEL DROPDOWN DE DOCTORES -->
                     
-                    <li><a href="#">Administradores</a></li>
+                    <!-- 🆕 ENLACES DE MASTER (otros módulos) -->
+                    <li class="nav-item"><a class="nav-link" href="{{ route('medicos.index') }}">Médicos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('pacientes.index') }}">Pacientes</a></li>
+                    <!-- FIN DE ENLACES DE MASTER -->
+
                     <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
-                            <li><a href="#">Dropdown 1</a></li>
-                            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Dropdown 1</a></li>
-                                    <li><a href="#">Deep Dropdown 2</a></li>
-                                    <li><a href="#">Deep Dropdown 3</a></li>
-                                    <li><a href="#">Deep Dropdown 4</a></li>
-                                    <li><a href="#">Deep Dropdown 5</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="{{ route('consultas.index') }}">Consultas Médicas</a></li>
+                            <li><a href="{{ route('habitaciones.index') }}">Habitaciones</a></li>
+                            <li><a href="{{ route('areas.index') }}">Áreas</a></li>
                             <li><a href="#">Dropdown 2</a></li>
                             <li><a href="#">Dropdown 3</a></li>
                             <li><a href="#">Dropdown 4</a></li>
