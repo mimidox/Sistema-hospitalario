@@ -2,16 +2,27 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model
 {
-    protected $table = 'area';            // tabla en singular
-    protected $primaryKey = 'area_id';    // PK personalizada
-    public $timestamps = false;           // tu tabla no tiene timestamps
+    use HasFactory;
+
+    protected $table = 'area';
+    protected $primaryKey = 'area_id';
+    public $timestamps = false;
 
     protected $fillable = [
         'nombre_area',
-        'descripcion',
+        'descripcion'
     ];
+
+    /**
+     * Relación con Administrativos
+     */
+    public function administrativos()
+    {
+        return $this->hasMany(Administrativo::class, 'area_id', 'area_id');
+    }
 }

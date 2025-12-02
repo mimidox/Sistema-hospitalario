@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Consulta extends Model
 {
+    use HasFactory;
+
     protected $table = 'consulta';
     protected $primaryKey = 'consulta_id';
     public $timestamps = false;
@@ -15,17 +18,37 @@ class Consulta extends Model
         'ficha_id',
         'motivo_consulta',
         'fecha',
-        'tipo',
+        'tipo'
     ];
 
-    public function medico()
+    /**
+     * Relación con Ficha
+     */
+    public function ficha()
     {
-        return $this->belongsTo(\App\Models\Medico::class, 'medico_id', 'medico_id');
+        return $this->belongsTo(Ficha::class, 'ficha_id', 'ficha_id');
     }
 
+    /**
+     * Relación con Medico
+     */
+    public function medico()
+    {
+        return $this->belongsTo(Medico::class, 'medico_id', 'medico_id');
+    }
+
+    /**
+     * Acceso al paciente a través de ficha
+     */
     public function paciente()
     {
-        // Si ficha_id apunta a paciente_id directamente:
-        return $this->belongsTo(\App\Models\Paciente::class, 'ficha_id', 'paciente_id');
+        return $this->hasOneThrough(
+            Paciente::class,
+            Ficha::class,
+            'ficha_id', // Foreign key on Ficha table
+            'paciente_id', // Foreign key on Paciente table
+            'ficha_id', // Local key on Consulta table
+            'paciente_id' // Local key on Ficha table
+        );
     }
 }
